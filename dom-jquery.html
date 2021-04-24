@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM vs JQuery</title>
+</head>
+<body>
+    <p>Lorem, ipsum dolor.</p>
+    <p>Lorem, ipsum dolor.</p>
+
+
+    <script src="jquery-3.6.0.min.js"></script>
+    <script>
+        //yukarıdaki ilk paragrafın DOM nesnesine erişiyoruz.
+        //var parag = document.querySelector("p");
+        //parag.style.color = "red";  //renk stilini değiştir. 
+
+        //mevcut DOM nesnesini JQuery'leştirme
+       // $(parag).css("color", "red"); //bu kod çalışmaz - 
+
+
+        //sayfadaki tüm paragrafları seçer ve kırmızı yapar.
+        //selector   
+        //filter -> first, last
+       //$p ile getirdiğimiz JQuery nesnesi
+       var p1 = $("p");  //jquery object
+       $("p").last().css("color","red"); //dizi gibi düşünebilirsin
+
+       // JQuery nesnesinden DOM elementine erişme
+       var p2 = $("p")[0]; // saf DOM elementi
+       p2.style.backgroundColor = "green"; //saf js kodu ile değiştirdik.
+
+    </script>
+</body>
+</html>
