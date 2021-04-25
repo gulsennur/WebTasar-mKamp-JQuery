@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JQuery - Traversing</title>
 </head>
-<body>
-    <ul id="liste">
+<body>   // ************* PARENT NODE 
+    <ul id="liste">  //liste id li elemente ulaşacağız  ******* NODE
         <li>Adem</li>
         <li>Ayşe</li>
         <li>Ferhat</li>
@@ -34,6 +34,50 @@
          var metin = el.innerText;
          el.innerText += ": " + metin.length;
         });
+
+         // CTRL+K ve CTRL+C
+         //CTRL+K ve CTRL+U
+
+         //JQuery ***********************
+         $("#liste > li").each(function(index, element) {  //her bir li için ayrı ayrı bu function çağırılır. 
+            var metin = $(this).text();
+            $(this).append(": " + metin.length);
+          });
+
+        var dizi = ["Emek", "Caner", "Fuat", "Ferhat", "İlker"]  //li
+        //pure JS ile bu dizinin elemanlarını bir liste oluşturup içerisine ekle
+        // ve sonra bu listeyi yukarıdaki listenin önüne ekle.
+        //ECMA 6
+        // let ul = document.createElement("ul");
+        // for (const ad of dizi) {
+        //     let li = document.createElement("li")
+        //     li.innerText = ad;
+        //     ul.appendChild(li);
+        // }
+        // let oncekiUI = document.getElementById("liste");
+        // //https://attacomsian.com/blog/javascript-insert-element-before
+        // oncekiUI.parentNode.insertBefore(ul,oncekiUI);
+
+        //JQuery ile bu dizinin elemanlarını bir liste oluşturup içerisine ekle
+        // ve sonra bu listeyi yukarıdaki listenin önüne ekle.
+        //elemanları tek tek alalım.
+        var yeniUI = $("<ul/>");
+        $.each(dizi, function(index, ad) {
+            $("<li/>").text(ad).appendTo(yeniUI);
+        });
+        yeniUI.insertBefore("#liste");
+
+        //yukarıda önce ul elementi  (jquery objesi olarak) oluşturduk.
+        //ad'ları jquery foreach ile gezdik.
+        //her ad için o adı içeren bir li oluşturduk ve onu ul'a ekledik. 
+        //yeni listeyi eski listenin ÖNCESİNE ekledik. 
+
+
+
+    
+        
+
+        
 
     </script>
     

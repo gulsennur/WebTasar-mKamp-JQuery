@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery - Traversal</title>
+</head>
+<body>
+    <ul>
+         <li class="haric">Nur</li>
+         <li>Meliha</li>
+         <li>Enes</li>
+         <li>Emek</li>
+         <li>Doğukan</li>
+         <li class="haric">Fuat</li>
+         <li>Kedi</li>
+         <li>Okan</li>
+         <li>Ceren</li>
+         <li class="haric">Özgür</li>
+    </ul>
+    <textarea id="ozet" rows="10" cols="30"></textarea>
+<script src="jquery-3.6.0.min.js"></script>
+<script>
+    var liler = $("li");
+    //li'lerin ilki 
+    yazdir("ilk kişi: " + liler.first().text());
+
+    //li'lerin sonuncusu
+    yazdir("Son kişi: " + liler.last().text());
+
+    //li'lerin beşincisi
+    yazdir("Beşinci kişi: " + liler.eq(4).text());
+
+    //yedinci'den sonraki isimleri al 
+    yazdir("7. sonrası: " + "aaa", "bbb", "ccc");
+    var adlar = liler.eq(6).nextAll().map(function(){
+        return this.innerText;
+    }).get().join(', ');
+    yazdir("7. sonrası adlar" + adlar);
+    
+    //ilk bulduğu Fuat'tan sonrakini yazdır.
+    var sonraki = liler.filter(function(index,li) {
+        return liler.innerText == "Fuat";
+    }).first().next().text();
+    yazdir("Fuat sonrası: "+ sonraki);
+
+    //liste öğelerinin sonuncusunun kerdeşlerini italic yap. 
+    //liler in sonuncusunun kardeşlerinin css'inin fontstyle'ını italic yap.
+    liler.last().siblings().css("font-style", "italic");
+
+
+    //liste öğelerinin beşincisinin sonrasını bold yap.
+    liler.eq(4).nextAll().css("font-weight", "bold")
+   
+    //liste öğelerinin haric sınfına sahip OLMAYANLARI getir.
+    var dahiller = liler.not(".haric").get().map(x => x.innerText).join(', ');
+    yazdir("haric sınıfı olmayanlar: " + dahiller);
+
+
+
+    function yazdir(metin){
+        var icerik = $("#ozet").val();
+        $("#ozet").val(icerik + metin + "\n" );
+    }
+   //yazdir("deneme 123");
+   //yazdir("başka bir deneme");
+
+
+</script>
+</body>
+</html>
