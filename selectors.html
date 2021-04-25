@@ -25,6 +25,10 @@
        Lorem  ipsum <span class="kirmizi">dolor</span> sit amet.
    </p> 
 
+   <p>
+       Arama motoru: <a href="https://google.com">Google</a>
+   </p> 
+
    <script src="jquery-3.6.0.min.js"></script>
    <script>
        //her şeyi seç
@@ -50,6 +54,19 @@
 
       //css hiyerarşi
       $("p > .kirmizi").css("background-color","gray")
+
+      //siblings : #oge5  sonraki kardeşleri
+      $("#oge5 ~ *").css("border-left", "10px solid red");
+
+      //content filter örnekleri 
+      //içinde dolor kelimesi geçen li'lerin sonuna D koy
+      $("li:contains('pisci')").append("D");
+
+      //içinde link içeren paragrafları seç
+      $("p:has(a)").append("[link]");
+      
+
+     
 
    </script>
 </body>

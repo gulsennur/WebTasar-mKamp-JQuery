@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery - Traversing</title>
+</head>
+<body>
+    <ul id="liste">
+        <li>Adem</li>
+        <li>Ayşe</li>
+        <li>Ferhat</li>
+        <li>Tuba</li>
+        <li>Alperen</li>
+        <li>Zeynep</li>
+        <li>Nur</li>
+        <li>Meliha</li>
+    </ul>
+
+    <script>
+        //her bir liste öğesinin sonuna o öğreninin uzunuluğunu koy
+        var ogeler = document.querySelectorAll("#liste > li");
+        //console.log(ogeler);
+        //FOR 
+        for(var i=0;  i<ogeler.length; i++)
+        {
+           var metin = ogeler[i].textContent;
+           console.log(metin + ": " + metin.length);
+        }
+        //FOREACH , içine function delegesi verirsen herbir öğeyi tek tek çağırır.
+        ogeler.forEach(function(el,key){
+         // console.log(key + " " + el.innerText);  //el : element
+         var metin = el.innerText;
+         el.innerText += ": " + metin.length;
+        });
+
+    </script>
+    
+</body>
+</html>
